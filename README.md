@@ -1,6 +1,6 @@
 # Measure Theory Notes
 
-These are my personal study notes on measure theory, written in LaTeX.
+These are my personal self-study notes on measure theory
 
 ## Topics Covered
 
