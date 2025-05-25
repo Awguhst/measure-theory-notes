@@ -296,7 +296,7 @@ Let \((X,\mathcal{A},\mu)\) be a measure space. Then:
 \begin{proof}
 (i) Extend \((A_n)\) by \(A_n = \varnothing\) for \(n > k\). Then by countable additivity,
 \[
-\mu\big(\bigcup_{n=0}^k A_n\big) = \mu\big(\bigcup_{n=0}^\infty A_n\big) = \sum_{n=0}^\infty \mu(A_n) = \sum_{n=0}^k \mu(A_n).
+\mu\big(\bigcup_{n=1}^k A_n\big) = \mu\big(\bigcup_{n=1}^\infty A_n\big) = \sum_{n=1}^\infty \mu(A_n) = \sum_{n=1}^k \mu(A_n).
 \]
 
 (ii) Since \(B = A \cup (B \setminus A)\) with disjoint union,
@@ -476,5 +476,90 @@ This is called the \(n\)-dimensional Lebesgue measure.
 \begin{remark}
 The set function \(\lambda_n\) is defined only on the family \(\mathcal{J}_n\) of half-open rectangles and hence is not yet a measure. Extending \(\lambda_n\) to a measure on \(\mathcal{B}(\mathbb{R}^n)\) requires the Carathéodory extension theorem, which will be developed later.
 \end{remark}
+
+
+\medskip
+\begin{theorem}[Existence and properties of Lebesgue measure]
+There exists a unique measure \(\lambda_n\) on \((\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))\) extending the pre-measure defined on \(\mathcal{J}_n\). Moreover, for all \(B \in \mathcal{B}(\mathbb{R}^n)\), \(\lambda_n\) satisfies:
+\begin{itemize}
+    \item[(i)] \textbf{Translation invariance:} \(\lambda_n(x + B) = \lambda_n(B)\) for all \(x \in \mathbb{R}^n\).
+    \item[(ii)] \textbf{Motion invariance:} \(\lambda_n(R^{-1}(B)) = \lambda_n(B)\) for any motion \(R\), i.e., composition of translations, rotations, and reflections.
+    \item[(iii)] \textbf{Linear change of variables:} \(\lambda_n(M^{-1}(B)) = |\det(M)|^{-1} \lambda_n(B)\) for any invertible matrix \(M \in \mathbb{R}^{n \times n}\).
+\end{itemize}
+These properties will be established later, once the necessary tools have been developed.
+\end{theorem}
+
+
+\medskip
+\begin{lemma}
+Let \((X, \mathcal{A})\) be a measure space, and let \(\mu : \mathcal{A} \to [0, \infty]\) be an additive set function with \(\mu(\emptyset) = 0\). Then \(\mu\) is a measure if and only if it is \textbf{continuous from below}, i.e., for every increasing sequence \((A_n)_{n \in \mathbb{N}} \subseteq \mathcal{A}\) with \(A_n \uparrow A\), we have
+\[
+\mu(A) = \lim_{n \to \infty} \mu(A_n) = \sup_{n \in \mathbb{N}} \mu(A_n).
+\]
+\end{lemma}
+
+\begin{proof}
+Any measure \(\mu\) is continuous from below.
+
+Conversely, suppose \(\mu\) is finitely additive, \(\mu(\emptyset) = 0\), and \(\mu\) is continuous from below. Let \((B_n)_{n \in \mathbb{N}} \subseteq \mathcal{A}\) be disjoint, and define \(A_n := \bigcup_{i=1}^n B_i\). Then \((A_n)\) is increasing with \(\bigcup_{n=1}^\infty A_n = \bigsqcup_{n=1}^\infty B_n\). By finite additivity,
+\[
+\mu(A_n) = \sum_{i=1}^n \mu(B_i),
+\]
+and by continuity from below,
+\[
+\mu\left(\bigsqcup_{n=1}^\infty B_n\right) = \mu\left(\bigcup_{n=1}^\infty A_n\right) = \lim_{n \to \infty} \mu(A_n) = \sum_{n=1}^\infty \mu(B_n).
+\]
+Hence \(\mu\) is countably additive, i.e., a measure.
+\end{proof}
+
+
+\medskip
+\begin{lemma}
+Let \((X, \mathcal{A})\) be a measurable space and \(\mu : \mathcal{A} \to [0, \infty)\) an additive set function with \(\mu(\emptyset) = 0\) and \(\mu(A) < \infty\) for all \(A \in \mathcal{A}\). Then \(\mu\) is a measure if and only if it satisfies one of the following continuity properties:
+
+\begin{enumerate}
+  \item[(i)] \(\mu\) is continuous from below;
+  \item[(ii)] \(\mu\) is continuous from above;
+  \item[(iii)] \(\mu\) is continuous at \(\emptyset\), i.e., for every decreasing sequence \((B_n)_{n \in \mathbb{N}}\) in \(\mathcal{A}\) with \(\bigcap_{n=0}^\infty B_n = \emptyset\), we have
+  \[
+    \lim_{n \to \infty} \mu(B_n) = 0.
+  \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Clearly, every measure satisfies properties (i)–(iii), so we only need to show that (iii) implies countable additivity.
+
+Assume \(\mu\) is additive, \(\mu(\emptyset) = 0\), and satisfies continuity at \(\emptyset\). Let \((A_n)_{n \in \mathbb{N}} \subseteq \mathcal{A}\) be pairwise disjoint and define \(A := \bigsqcup_{n \in \mathbb{N}} A_n\). For each \(n\), let
+\[
+B_n := A \setminus \bigcup_{i=1}^n A_i.
+\]
+Then \((B_n)\) is a decreasing sequence in \(\mathcal{A}\) with \(\bigcap_{n \in \mathbb{N}} B_n = \emptyset\), so by continuity at \(\emptyset\), we have \(\mu(B_n) \to 0\).
+
+Using additivity, we compute
+\[
+\mu(A) = \mu\left(B_n \sqcup \bigcup_{i=1}^n A_i\right) = \mu(B_n) + \sum_{i=1}^n \mu(A_i).
+\]
+Taking the limit as \(n \to \infty\), we get
+\[
+\mu(A) = \lim_{n \to \infty} \left( \mu(B_n) + \sum_{i=1}^n \mu(A_i) \right) = \sum_{i=1}^\infty \mu(A_i).
+\]
+Thus, \(\mu\) is countably additive, hence a measure.
+\end{proof}
+
+
+
+\vspace{3em}
+\section{Uniqueness}
+
+\begin{definition}
+A \emph{Dynkin system} (or \(\lambda\)-system) \(\mathcal{D} \subseteq \mathcal{P}(X)\) is a collection of subsets of \(X\) such that:
+\begin{enumerate}
+    \item \(X \in \mathcal{D} \hfill \text{(\textbf{D1})}\)
+    \item If \(D \in \mathcal{D}\), then \(D^c \in \mathcal{D} \hfill \text{(\textbf{D2})}\)
+    \item If \((D_n)_{n \in \mathbb{N}} \subseteq \mathcal{D}\) are pairwise disjoint, then \(\bigsqcup_{n \in \mathbb{N}} D_n \in \mathcal{D} \hfill \text{(\textbf{D3})}\)
+\end{enumerate}
+\end{definition}
+
 
 \end{document}
