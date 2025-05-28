@@ -9,7 +9,7 @@
 \usepackage[a4paper, margin=1in]{geometry}
 
 \title{\textbf{Measure Theory}\\[0.5em]}
-\author{}
+\author{R.Rusev}
 \date{}
 
 \theoremstyle{definition}
@@ -27,11 +27,11 @@
 \section{σ-Algebras}
 \begin{definition}
 A $\sigma$-algebra $\mathcal{A}$ on a set $X$ is a family of subsets of $X$ such that:
-\begin{enumerate}
+\begin{itemize}
     \item $X \in \mathcal{A} \hfill \text{($\boldsymbol{\Sigma}_1$)}$
     \item If $A \in \mathcal{A}$, then $A^c \in \mathcal{A} \hfill \text{($\boldsymbol{\Sigma}_2$)}$
     \item If $(A_n)_{n \in \mathbb{N}} \subseteq \mathcal{A}$, then $\bigcup_{n \in \mathbb{N}} A_n \in \mathcal{A} \hfill \text{($\boldsymbol{\Sigma}_3$)}$
-\end{enumerate}
+\end{itemize}
 
 \medskip
 
@@ -57,11 +57,11 @@ A set $A \in \mathcal{A}$ is said to be \textit{measurable} or \textit{$\mathcal
    \begin{proof}
 We verify the three defining properties of a $\sigma$-algebra on $E$:
 
-\begin{enumerate}
+\begin{itemize}
     \item Since $X \in \mathcal{A}$, we have \( E = E \cap X \in \mathcal{A}_E \).
     \item If \( E \cap A \in \mathcal{A}_E \), then \( E \setminus (E \cap A) = E \cap A^c \), and since \( A^c \in \mathcal{A} \), it follows that \( E \cap A^c \in \mathcal{A}_E \).
     \item If \( (E \cap A_n)_{n \in \mathbb{N}} \subseteq \mathcal{A}_E \), then \( \bigcup_{n} (E \cap A_n) = E \cap \bigcup_{n} A_n \), and since \( \bigcup_n A_n \in \mathcal{A} \), we conclude that \( \bigcup_n (E \cap A_n) \in \mathcal{A}_E \).
-\end{enumerate}
+\end{itemize}
 Hence, $\mathcal{A}_E$ is a $\sigma$-algebra on $E$.
 \end{proof}
 
@@ -85,11 +85,11 @@ Then, $\mathcal{A}$ is a $\sigma$-algebra on $X$.
 
 \begin{proof}
 We verify the $\sigma$-algebra properties for $\mathcal{A}$:
-\begin{enumerate}
+\begin{itemize}
     \item Since $X \in \mathcal{A}_i$ for all $i \in I$, we have $X \in \mathcal{A}$.
     \item If $A \in \mathcal{A}$, then $A \in \mathcal{A}_i$ for all $i \in I$, so \( A^c = X \setminus A \in \mathcal{A}_i \) for all \( i \in I \), hence \( A^c \in \mathcal{A} \).
     \item If \( (A_n)_{n \in \mathbb{N}} \subseteq \mathcal{A} \), then \( A_n \in \mathcal{A}_i \) for all \( n \) and \( i \), so \( \bigcup_{n \in \mathbb{N}} A_n \in \mathcal{A}_i \) for all \( i \in I \), and thus \( \bigcup_{n \in \mathbb{N}} A_n \in \mathcal{A} \).
-\end{enumerate}
+\end{itemize}
 Therefore, $\mathcal{A}$ is a $\sigma$-algebra on $X$.
 \end{proof}
 
@@ -107,21 +107,21 @@ Let $X$ be a set and let $\mathcal{E} \subseteq \mathcal{P}(X)$ be a collection 
 \medskip
 \begin{remark}[Generated $\sigma$-algebras]
 \leavevmode
-\begin{enumerate}
+\begin{itemize}
     \item If $\mathcal{A}$ is a $\sigma$-algebra, then $\sigma(\mathcal{A}) = \mathcal{A}$.
     \item For $A \subseteq X$, we have $\sigma(\{A\}) = \{\emptyset, A, A^c, X\}$.
     \item If $\mathcal{F} \subseteq \mathcal{G} \subseteq \mathcal{A}$, then $\sigma(\mathcal{F}) \subseteq \sigma(\mathcal{G}) \subseteq \sigma(\mathcal{A})$.
-\end{enumerate}
+\end{itemize}
 \end{remark}
 
 \medskip
 \begin{definition}[Topological Space]
 A \textit{topological space} is a pair $(X, \mathcal{T})$ where $X$ is a set and $\mathcal{T} \subseteq \mathcal{P}(X)$ is a collection of subsets of $X$, called \textit{open sets}, satisfying the following properties:
-\begin{enumerate}
+\begin{itemize}
     \item $\emptyset \in \mathcal{T}$ and $X \in \mathcal{T}$,
     \item If $\{U_\alpha \in \mathcal{T} : \alpha \in I\}$ is an arbitrary collection of open sets, then the union $\bigcup_{\alpha \in I} U_\alpha \in \mathcal{T}$,
     \item If $\{U_i \in \mathcal{T} : i = 1, \dots, n\}$ is a finite collection of open sets, then the intersection $\bigcap_{i=1}^n U_i \in \mathcal{T}$.
-\end{enumerate}
+\end{itemize}
 The collection $\mathcal{T}$ is called a \textit{topology} on $X$. The complement of an open set is called a \textit{closed set}.
 \end{definition}
 
@@ -168,7 +168,7 @@ Let \( \mathcal{O}, \mathcal{C}, \mathcal{K} \subseteq \mathcal{P}(\mathbb{R}^n)
 \end{theorem}
 
 \begin{proof}
-Since compact sets are closed, we have \( \mathcal{K} \subseteq \mathcal{C} \), and by Remark~1.1(3), \( \sigma(\mathcal{K}) \subseteq \sigma(\mathcal{C}) \). Conversely, for any \( C \in \mathcal{C} \), define \( C_k := C \cap B_k(0) \), where \( B_k(0) \) is the closed ball of radius \( k \) centered at the origin. Each \( C_k \) is closed and bounded, hence compact, so \( C_k \in \mathcal{K} \). Since \( C = \bigcup_{k \in \mathbb{N}} C_k \), it follows that \( C \in \sigma(\mathcal{K}) \), and thus \( \sigma(\mathcal{C}) \subseteq \sigma(\mathcal{K}) \).
+Since compact sets are closed, we have \( \mathcal{K} \subseteq \mathcal{C} \), and by Remark~1.1, \( \sigma(\mathcal{K}) \subseteq \sigma(\mathcal{C}) \). Conversely, for any \( C \in \mathcal{C} \), define \( C_k := C \cap B_k(0) \), where \( B_k(0) \) is the closed ball of radius \( k \) centered at the origin. Each \( C_k \) is closed and bounded, hence compact, so \( C_k \in \mathcal{K} \). Since \( C = \bigcup_{k \in \mathbb{N}} C_k \), it follows that \( C \in \sigma(\mathcal{K}) \), and thus \( \sigma(\mathcal{C}) \subseteq \sigma(\mathcal{K}) \).
 
 Next, since \( \mathcal{C} = \mathcal{O}^c := \{ U^c : U \in \mathcal{O} \} \), and complements of sets in a σ-algebra are again in the σ-algebra, it follows that \( \mathcal{C} \subseteq \sigma(\mathcal{O}) \), hence \( \sigma(\mathcal{C}) \subseteq \sigma(\mathcal{O}) \). The reverse inclusion follows similarly from \( \mathcal{O} = \mathcal{C}^c \). Therefore, we have:
 \[
@@ -225,7 +225,7 @@ and for any pairwise disjoint sequence \((A_n)_{n \in \mathbb{N}} \subseteq \mat
 \]
 Property (M2) is also called \emph{countable additivity}.
 
-If \(\mu\) satisfies (M1), (M2), but \(\mathcal{A}\) is not a \(\sigma\)-algebra, then \(\mu\) is called a \textit{premeasure}.
+If \(\mu\) satisfies (M1), (M2), but \(\mathcal{A}\) is not a \(\sigma\)-algebra, then \(\mu\) is called a \textit{pre-measure}.
 \end{definition}
 
 \medskip
@@ -290,7 +290,7 @@ In this case, the measure space \((X, \mathcal{A}, \mu)\) is called \emph{\(\sig
 Let \((X,\mathcal{A},\mu)\) be a measure space. Then:
 \renewcommand{\labelenumi}{(\roman{enumi})}
 \begin{enumerate}
-    \item If \(A_0, \ldots, A_k \in \mathcal{A}\) are pairwise disjoint, then \(\mu\big(\bigcup_{n=0}^k A_n\big) = \sum_{n=0}^k \mu(A_n)\).
+    \item If \(A_0, \ldots, A_k \in \mathcal{A}\) are pairwise disjoint, then \(\mu\big(\bigcup_{n=1}^k A_n\big) = \sum_{n=1}^k \mu(A_n)\).
     \item If \(A, B \in \mathcal{A}\) with \(A \subseteq B\), then \(\mu(A) \leq \mu(B)\).
     \item If \(A, B \in \mathcal{A}\), \(A \subseteq B\), and \(\mu(A) < \infty\), then \(\mu(B \setminus A) = \mu(B) - \mu(A)\).
 \end{enumerate}
@@ -299,10 +299,10 @@ Let \((X,\mathcal{A},\mu)\) be a measure space. Then:
 \begin{proof}
 (i) Extend \((A_n)\) by \(A_n = \varnothing\) for \(n > k\). Then by countable additivity,
 \[
-\mu\big(\bigcup_{n=1}^k A_n\big) = \mu\big(\bigcup_{n=1}^\infty A_n\big) = \sum_{n=1}^\infty \mu(A_n) = \sum_{n=1}^k \mu(A_n).
+\mu\big(\bigsqcup_{n=1}^k A_n\big) = \mu\big(\bigsqcup_{n=1}^\infty A_n\big) = \sum_{n=1}^\infty \mu(A_n) = \sum_{n=1}^k \mu(A_n).
 \]
 
-(ii) Since \(B = A \cup (B \setminus A)\) with disjoint union,
+(ii) Since \(B = A \sqcup (B \setminus A)\) we have
 \[
 \mu(B) = \mu(A) + \mu(B \setminus A) \geq \mu(A).
 \]
@@ -523,7 +523,7 @@ Let \((X, \mathcal{A})\) be a measurable space and \(\mu : \mathcal{A} \to [0, \
 \begin{enumerate}
   \item[(i)] \(\mu\) is continuous from below;
   \item[(ii)] \(\mu\) is continuous from above;
-  \item[(iii)] \(\mu\) is continuous at \(\emptyset\), i.e., for every decreasing sequence \((B_n)_{n \in \mathbb{N}}\) in \(\mathcal{A}\) with \(\bigcap_{n=0}^\infty B_n = \emptyset\), we have
+  \item[(iii)] \(\mu\) is continuous at \(\emptyset\), i.e., for every decreasing sequence \((B_n)_{n \in \mathbb{N}}\) in \(\mathcal{A}\) with \(\bigcap_{n=1}^\infty B_n = \emptyset\), we have
   \[
     \lim_{n \to \infty} \mu(B_n) = 0.
   \]
@@ -557,13 +557,14 @@ Thus, \(\mu\) is countably additive, hence a measure.
 
 \begin{definition}
 A \emph{Dynkin system} (or \(\lambda\)-system) \(\mathcal{D} \subseteq \mathcal{P}(X)\) is a collection of subsets of \(X\) such that:
-\begin{enumerate}
+\begin{itemize}
     \item \(X \in \mathcal{D} \hfill \text{(\textbf{D1})}\)
     \item If \(D \in \mathcal{D}\), then \(D^c \in \mathcal{D} \hfill \text{(\textbf{D2})}\)
     \item If \((D_n)_{n \in \mathbb{N}} \subseteq \mathcal{D}\) are pairwise disjoint, then \(\bigsqcup_{n \in \mathbb{N}} D_n \in \mathcal{D} \hfill \text{(\textbf{D3})}\)
-\end{enumerate}
+\end{itemize}
 \end{definition}
 
+\medskip
 \begin{remark}
 As with \(\sigma\)-algebras one easily checks that \(\emptyset \in \mathcal{D}\) and that finite disjoint unions are in \(\mathcal{D}\): if \(D, E \in \mathcal{D}\) with \(D \cap E = \emptyset\), then \(D \sqcup E \in \mathcal{D}\). Every \(\sigma\)-algebra is a Dynkin system, but the converse is not true in general.
 \end{remark}
