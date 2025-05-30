@@ -6,5 +6,6 @@ These are my personal self-study notes on measure theory
 
 - σ-algebras
 - Measure spaces
-- Uniqueness
+- Uniqueness of Measures
+- Existence of Measures
 
