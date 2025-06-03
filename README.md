@@ -1,6 +1,6 @@
 # Measure Theory Notes
 
-These are my personal self-study notes on measure theory, primarily based on "**Integration, Measure, and Martingales by René L. Schilling**".
+These are my personal self-study notes on measure theory, primarily based on "**Measures, Integrals and Martingales by René L. Schilling**".
 
 ## Topics Covered
 
