@@ -1,6 +1,6 @@
 # Measure Theory Notes
 
-These are my personal self-study notes on measure theory, primarily based on "**Integration, Measure, and Martingales by Michael J. Steele**".
+These are my personal self-study notes on measure theory, primarily based on "**Integration, Measure, and Martingales by René L. Schilling**".
 
 ## Topics Covered
 
@@ -9,4 +9,4 @@ These are my personal self-study notes on measure theory, primarily based on "**
 - Uniqueness of Measures
 - Existence of Measures
 
-The content in these notes is heavily influenced by the theory and examples presented in Steele's book.
+The content in these notes is heavily influenced by the theory and examples presented in Schilling's book.
