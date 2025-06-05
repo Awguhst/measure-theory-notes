@@ -8,3 +8,4 @@ These are my personal self-study notes on measure theory, primarily based on "**
 - Measure spaces
 - Uniqueness of Measures
 - Existence of Measures
+- Measurable Mappings
