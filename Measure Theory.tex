@@ -804,6 +804,10 @@ The proof proceeds in four main steps:
 If $\mathcal{S}$ contains an increasing sequence $(S_n)_{n \in \mathbb{N}}$ with $S_n \uparrow X$ and $\mu(S_n) < \infty$ for all $n$, then the extension is unique.
 \end{proof}
 
+\medskip
+\begin{center}
+\textbf{Existence of Lebesgue Measure on \( \mathbb{R} \)}
+\end{center}
 
 \medskip
 \begin{lemma}
@@ -867,9 +871,6 @@ Letting $N \to \infty$ and then $\varepsilon \to 0$, we conclude:
 Thus, $\lambda_1$ is countably additive on $\mathcal{J}_1$, and hence a pre-measure.
 \end{proof}
 
-\noindent
-This establishes the one-dimensional Lebesgue measure $\lambda_1$ as a pre-measure on $\mathcal{J}_1$. By Theorem~4.1 (Carathéodory's extension theorem), it extends to a measure on $\mathcal{B}(\mathbb{R})$, yielding the Lebesgue measure on $\mathbb{R}$.
-
 \medskip
 \begin{lemma}[Lebesgue measure on $\mathbb{R}$]
 The set function $\lambda_1$, defined on $\mathcal{J}_1$ by $\lambda_1([a,b)) = b - a$ for $a < b$, extends to a measure on $\mathcal{B}(\mathbb{R})$. This extension is the unique measure $\mu$ on $\mathcal{B}(\mathbb{R})$ such that
@@ -885,7 +886,156 @@ Consider the sequence of half-open intervals $[-k, k) \subseteq \mathbb{R}$ for 
 \[
 \lambda_1([-k,k)) = 2k < \infty \quad \text{for all } k \in \mathbb{N}.
 \]
-Thus, all the conditions of Theorem~4.1 (Carathéodory's extension theorem) are satisfied. It follows that $\lambda_1$ extends uniquely to a measure on $\mathcal{B}(\mathbb{R})$.
+Thus, all the conditions of Theorem~4.1 (Carathéodory's extension theorem) are satisfied. It follows that $\lambda_1$ extends uniquely to a measure on $\mathcal{B}(\mathbb{R})$,
+yielding the one-dimensional Lebesgue measure on $\mathbb{R}$.
 \end{proof}
+
+\medskip
+\begin{center}
+\textbf{Existence of Lebesgue Measure on \( \mathbb{R}^n \)}
+\end{center}
+
+\begin{lemma}
+Let \( \mathcal{J}_n \) denote the collection of half-open rectangles in \( \mathbb{R}^n \) of the form
+\[
+\llbracket a, b \rrparenthesis = \prod_{i=1}^n [a_i, b_i),
+\quad \text{where } a = (a_1, \dots, a_n),\ b = (b_1, \dots, b_n),\ a_i < b_i.
+\]
+Then \( \mathcal{J}_n \) is a semi-ring.
+\end{lemma}
+
+\begin{proof}
+We prove the statement by induction on \( n \). 
+Assume \( \mathcal{J}_n \subset \mathbb{R}^n \) is a semi-ring. Define
+\[
+\mathcal{J}_{n+1} := \mathcal{J}_n \times \mathcal{J}_1,
+\]
+i.e., the collection of rectangles of the form \( R = R_n \times R_1 \), where \( R_n \in \mathcal{J}_n \) and \( R_1 \in \mathcal{J}_1 \).
+
+We verify the properties of a semi-ring:
+
+\begin{itemize}
+    \item[(S1)] \emph{Closure under the empty set:}  
+    Since \( \emptyset \in \mathcal{J}_n \) and \( \mathcal{J}_1 \), we have
+    \[
+    \emptyset = \emptyset \times [a, b) \in \mathcal{J}_{n+1}.
+    \]
+
+    \item[(S2)] \emph{Closure under intersection:}  
+    Let \( R = R_n \times R_1 \) and \( S = S_n \times S_1 \) be in \( \mathcal{J}_{n+1} \). Then
+    \[
+    R \cap S = (R_n \cap S_n) \times (R_1 \cap S_1),
+    \]
+    which belongs to \( \mathcal{J}_{n+1} \), since both \( R_n \cap S_n \in \mathcal{J}_n \) and \( R_1 \cap S_1 \in \mathcal{J}_1 \), by the inductive hypothesis.
+
+    \item[(S3)] \emph{Closure under set difference (finite disjoint union):}  
+    Consider
+    \[
+    R \setminus S = (R_n \times R_1) \setminus (S_n \times S_1).
+    \]
+    This set can be decomposed as
+    \[
+    (R_n \setminus S_n) \times (R_1 \setminus S_1)
+    \sqcup (R_n \cap S_n) \times (R_1 \setminus S_1)
+    \sqcup (R_n \setminus S_n) \times (R_1 \cap S_1).
+    \]
+    Each of the components \( R_n \setminus S_n \), \( R_n \cap S_n \), \( R_1 \setminus S_1 \), and \( R_1 \cap S_1 \) can be written as finite disjoint unions of sets in \( \mathcal{J}_n \) and \( \mathcal{J}_1 \), respectively. Therefore, their Cartesian products yield finite disjoint unions of elements in \( \mathcal{J}_{n+1} \).
+\end{itemize}
+
+Hence, \( \mathcal{J}_{n+1} \) is a semi-ring. By induction, it follows that \( \mathcal{J}_n \) is a semi-ring for all \( n \in \mathbb{N} \).
+\end{proof}
+
+\medskip
+\begin{lemma}
+The function \( \lambda_n \colon \mathcal{J}_n \to [0, \infty) \), defined by
+\[
+\lambda_n\big([a_1, b_1) \times \cdots \times [a_n, b_n)\big) = \prod_{i=1}^n (b_i - a_i),
+\]
+is a pre-measure on the semi-ring \( \mathcal{J}_n \).
+\end{lemma}
+
+\begin{proof}
+We prove that \( \lambda_n \) is a pre-measure on \( \mathcal{J}_n \) by induction on \( n \).
+
+For \( n = 1 \), the result follows from Lemma 4.2, where \( \lambda_1 \) is shown to be countably additive on \( \mathcal{J}_1 \).
+
+Assume now that \( \lambda_n \) is countably additive on \( \mathcal{J}_n \). Let \( I = I_1 \times I_n \in \mathcal{J}_{n+1} \), and suppose that \( \{I^i = I_1^i \times I_n^i\}_{i \in \mathbb{N}} \subset \mathcal{J}_{n+1} \) is a disjoint collection with
+\[
+\bigsqcup_{i \in \mathbb{N}} I^i = I.
+\]
+
+Then,
+\[
+I_1 = \bigcup_{i \in \mathbb{N}} I_1^i \quad \text{and} \quad I_n = \bigcup_{i \in \mathbb{N}} I_n^i.
+\]
+Define disjoint refinements of the \( I_1^i \) and \( I_n^i \) as follows:
+\[
+\widehat{I}_d^1 := I_d^1, \quad \widehat{I}_d^{i+1} := I_d^{i+1} \setminus \bigcup_{j=1}^{i} I_d^j \quad \text{for } d = 1, n.
+\]
+Then \( \bigsqcup_{i=1}^N \widehat{I}_d^i = \bigcup_{i=1}^N I_d^i \) for all \( N \), and each \( \widehat{I}_d^i \) is a finite union of disjoint rectangles in \( \mathcal{J}_d \), since \( \mathcal{J}_d \) is a semi-ring.
+
+So, each \( I^i = I_1^i \times I_n^i \) becomes a finite disjoint union of sets of the form \( \widetilde{I}_1^k \times \widetilde{I}_n^\ell \), with \( \widetilde{I}_1^k \in \mathcal{J}_1 \), \( \widetilde{I}_n^\ell \in \mathcal{J}_n \). Hence,
+\[
+I = \bigsqcup_{i \in \mathbb{N}} I^i
+= \bigsqcup_{k \in \mathbb{N}} \widetilde{I}_1^k \times \left( \bigsqcup_{\ell \in \mathbb{N}} \widetilde{I}_n^\ell \right)
+= \bigsqcup_{k, \ell \in \mathbb{N}} \widetilde{I}_1^k \times \widetilde{I}_n^\ell.
+\]
+
+Now, since \( \lambda_{n+1}(A \times B) = \lambda_1(A) \cdot \lambda_n(B) \), and both \( \lambda_1 \) and \( \lambda_n \) are countably additive by the induction hypothesis:
+\[
+\lambda_{n+1}(I) = \sum_{k} \sum_{\ell} \lambda_1(\widetilde{I}_1^k) \cdot \lambda_n(\widetilde{I}_n^\ell)
+= \sum_{k, \ell} \lambda_{n+1}(\widetilde{I}_1^k \times \widetilde{I}_n^\ell).
+\]
+
+Similarly, each \( I^i = I_1^i \times I_n^i \) can be decomposed as
+\[
+I^i = \bigsqcup_{(k, \ell): \widetilde{I}_1^k \subset I_1^i, \, \widetilde{I}_n^\ell \subset I_n^i} \widetilde{I}_1^k \times \widetilde{I}_n^\ell,
+\]
+so
+\[
+\lambda_{n+1}(I^i) = \sum_{k, \ell: \widetilde{I}_1^k \times \widetilde{I}_n^\ell \subset I^i} \lambda_{n+1}(\widetilde{I}_1^k \times \widetilde{I}_n^\ell).
+\]
+
+Summing over \( i \in \mathbb{N} \) gives:
+\[
+\sum_{i \in \mathbb{N}} \lambda_{n+1}(I^i)
+= \sum_{k, \ell} \lambda_{n+1}(\widetilde{I}_1^k \times \widetilde{I}_n^\ell)
+= \lambda_{n+1}(I).
+\]
+
+Hence, \( \lambda_{n+1} \) is countably additive on \( \mathcal{J}_{n+1} \), and by induction, \( \lambda_n \) is a pre-measure on \( \mathcal{J}_n \) for all \( n \in \mathbb{N} \).
+\end{proof}
+
+\medskip
+\begin{corollary}[Lebesgue measure on \( \mathbb{R}^n \)]
+The set function \( \lambda_n \) extends to a measure on the Borel \( \sigma \)-algebra \( \mathcal{B}(\mathbb{R}^n) \), called the \emph{Lebesgue measure}. It is the unique measure satisfying
+\[
+\lambda_n\left( [a_1, b_1) \times \cdots \times [a_n, b_n) \right) = \prod_{i=1}^n (b_i - a_i), \quad \text{for all } a_i < b_i.
+\]
+\end{corollary}
+
+
+
+\vspace{3em}
+\section{Measurable Mappings}
+
+\medskip
+\begin{definition}[Measurable Map]
+Let \( (X, \mathcal{A}) \), \( (X', \mathcal{A}') \) be measurable spaces. A map \( T : X \to X' \) is called \(\mathcal{A}/\mathcal{A}'\)-measurable (or simply measurable) if the pre-image of every measurable set is measurable:
+\[
+T^{-1}(A') \in \mathcal{A} \quad \text{for all } A' \in \mathcal{A}'.
+\]
+\end{definition}
+
+\begin{remark}
+\leavevmode
+\begin{itemize}
+    \item Probabilists often refer to a measurable map defined on a probability space as a \emph{random variable}.
+    \item The symbolic notation \( T^{-1}(\mathcal{A}') := \{ T^{-1}(A') : A' \in \mathcal{A}' \} \) is often used. We also write \( T^{-1}(\mathcal{A}') \subset \mathcal{A} \) as shorthand for measurability.
+    \item It is common to write \( T : (X, \mathcal{A}) \to (X', \mathcal{A}') \) to indicate that \( T \) is measurable.
+    \item A measurable map between \( \mathcal{B}(\mathbb{R}^n) \) and \( \mathcal{B}(\mathbb{R}^m) \) is often called a \emph{Borel measurable map}.
+\end{itemize}
+\end{remark}
+
 
 \end{document}
