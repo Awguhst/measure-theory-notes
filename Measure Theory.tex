@@ -954,58 +954,6 @@ The function \( \lambda_n \colon \mathcal{J}_n \to [0, \infty) \), defined by
 is a pre-measure on the semi-ring \( \mathcal{J}_n \).
 \end{lemma}
 
-\begin{proof}
-We prove that \( \lambda_n \) is a pre-measure on \( \mathcal{J}_n \) by induction on \( n \).
-
-For \( n = 1 \), the result follows from Lemma 4.2, where \( \lambda_1 \) is shown to be countably additive on \( \mathcal{J}_1 \).
-
-Assume now that \( \lambda_n \) is countably additive on \( \mathcal{J}_n \). Let \( I = I_1 \times I_n \in \mathcal{J}_{n+1} \), and suppose that \( \{I^i = I_1^i \times I_n^i\}_{i \in \mathbb{N}} \subset \mathcal{J}_{n+1} \) is a disjoint collection with
-\[
-\bigsqcup_{i \in \mathbb{N}} I^i = I.
-\]
-
-Then,
-\[
-I_1 = \bigcup_{i \in \mathbb{N}} I_1^i \quad \text{and} \quad I_n = \bigcup_{i \in \mathbb{N}} I_n^i.
-\]
-Define disjoint refinements of the \( I_1^i \) and \( I_n^i \) as follows:
-\[
-\widehat{I}_d^1 := I_d^1, \quad \widehat{I}_d^{i+1} := I_d^{i+1} \setminus \bigcup_{j=1}^{i} I_d^j \quad \text{for } d = 1, n.
-\]
-Then \( \bigsqcup_{i=1}^N \widehat{I}_d^i = \bigcup_{i=1}^N I_d^i \) for all \( N \), and each \( \widehat{I}_d^i \) is a finite union of disjoint rectangles in \( \mathcal{J}_d \), since \( \mathcal{J}_d \) is a semi-ring.
-
-So, each \( I^i = I_1^i \times I_n^i \) becomes a finite disjoint union of sets of the form \( \widetilde{I}_1^k \times \widetilde{I}_n^\ell \), with \( \widetilde{I}_1^k \in \mathcal{J}_1 \), \( \widetilde{I}_n^\ell \in \mathcal{J}_n \). Hence,
-\[
-I = \bigsqcup_{i \in \mathbb{N}} I^i
-= \bigsqcup_{k \in \mathbb{N}} \widetilde{I}_1^k \times \left( \bigsqcup_{\ell \in \mathbb{N}} \widetilde{I}_n^\ell \right)
-= \bigsqcup_{k, \ell \in \mathbb{N}} \widetilde{I}_1^k \times \widetilde{I}_n^\ell.
-\]
-
-Now, since \( \lambda_{n+1}(A \times B) = \lambda_1(A) \cdot \lambda_n(B) \), and both \( \lambda_1 \) and \( \lambda_n \) are countably additive by the induction hypothesis:
-\[
-\lambda_{n+1}(I) = \sum_{k} \sum_{\ell} \lambda_1(\widetilde{I}_1^k) \cdot \lambda_n(\widetilde{I}_n^\ell)
-= \sum_{k, \ell} \lambda_{n+1}(\widetilde{I}_1^k \times \widetilde{I}_n^\ell).
-\]
-
-Similarly, each \( I^i = I_1^i \times I_n^i \) can be decomposed as
-\[
-I^i = \bigsqcup_{(k, \ell): \widetilde{I}_1^k \subset I_1^i, \, \widetilde{I}_n^\ell \subset I_n^i} \widetilde{I}_1^k \times \widetilde{I}_n^\ell,
-\]
-so
-\[
-\lambda_{n+1}(I^i) = \sum_{k, \ell: \widetilde{I}_1^k \times \widetilde{I}_n^\ell \subset I^i} \lambda_{n+1}(\widetilde{I}_1^k \times \widetilde{I}_n^\ell).
-\]
-
-Summing over \( i \in \mathbb{N} \) gives:
-\[
-\sum_{i \in \mathbb{N}} \lambda_{n+1}(I^i)
-= \sum_{k, \ell} \lambda_{n+1}(\widetilde{I}_1^k \times \widetilde{I}_n^\ell)
-= \lambda_{n+1}(I).
-\]
-
-Hence, \( \lambda_{n+1} \) is countably additive on \( \mathcal{J}_{n+1} \), and by induction, \( \lambda_n \) is a pre-measure on \( \mathcal{J}_n \) for all \( n \in \mathbb{N} \).
-\end{proof}
-
 \medskip
 \begin{corollary}[Lebesgue measure on \( \mathbb{R}^n \)]
 The set function \( \lambda_n \) extends to a measure on the Borel \( \sigma \)-algebra \( \mathcal{B}(\mathbb{R}^n) \), called the \emph{Lebesgue measure}. It is the unique measure satisfying
@@ -1037,5 +985,93 @@ T^{-1}(A') \in \mathcal{A} \quad \text{for all } A' \in \mathcal{A}'.
 \end{itemize}
 \end{remark}
 
+\medskip
+\begin{example}
+Let \( (X, \mathcal{A}) \) be a measurable space and let \( A \in \mathcal{A} \). We show that the indicator function
+\[
+\mathbf{1}_A : X \to \{0, 1\}, \quad
+\mathbf{1}_A(x) =
+\begin{cases}
+1, & x \in A, \\
+0, & x \notin A,
+\end{cases}
+\]
+is \( \mathcal{A} / \mathcal{P}(\{0, 1\}) \)-measurable.
+
+We check that the preimage of each subset of \( \{0, 1\} \) lies in \( \mathcal{A} \):
+\begin{itemize}
+    \item \( \mathbf{1}_A^{-1}(\emptyset) = \emptyset \in \mathcal{A} \),
+    \item \( \mathbf{1}_A^{-1}(\{0\}) = A^c \in \mathcal{A} \),
+    \item \( \mathbf{1}_A^{-1}(\{1\}) = A \in \mathcal{A} \),
+    \item \( \mathbf{1}_A^{-1}(\{0, 1\}) = X \in \mathcal{A} \).
+\end{itemize}
+Therefore, \( \mathbf{1}_A \) is measurable.
+\end{example}
+
+\medskip
+\begin{lemma}
+Let \( (X, \mathcal{A}) \), \( (X', \mathcal{A}') \) be measurable spaces, and suppose \( \mathcal{A}' = \sigma(\mathcal{E}') \). Then a map \( T : X \to X' \) is \( \mathcal{A} / \mathcal{A}' \)-measurable if and only if \( T^{-1}(\mathcal{E}') \subseteq \mathcal{A}, \text{ i.e. if } \)
+\[
+T^{-1}(E') \in \mathcal{A} \quad \text{for all } E' \in \mathcal{E}'.
+\]
+\end{lemma}
+
+\begin{proof}
+If \( T \) is measurable, then by definition \( T^{-1}(A') \in \mathcal{A} \) for all \( A' \in \mathcal{A}' \). Since \( \mathcal{E}' \subset \mathcal{A}' \), it follows immediately that \( T^{-1}(E') \in \mathcal{A} \) for all \( E' \in \mathcal{E}' \).
+
+Conversely, suppose \( T^{-1}(E') \in \mathcal{A} \) for every \( E' \in \mathcal{E}' \). Define
+\[
+\mathcal{D}' := \{ A' \subseteq X' : T^{-1}(A') \in \mathcal{A} \}.
+\]
+By assumption, \( \mathcal{E}' \subseteq \mathcal{D}' \). We now show that \( \mathcal{D}' \) is a \( \sigma \)-algebra:
+
+\begin{itemize}
+  \item Since \( T^{-1}(X') = X \in \mathcal{A} \), we have \( X' \in \mathcal{D}' \).
+  \item If \( A' \in \mathcal{D}' \), then \( T^{-1}(A'^c) = T^{-1}(A')^c \in \mathcal{A} \), so \( A'^c \in \mathcal{D}' \).
+  \item If \( A_1', A_2', \dots \in \mathcal{D}' \), then
+  \[
+  T^{-1}\left( \bigcup_{i=1}^\infty A_i' \right) = \bigcup_{i=1}^\infty T^{-1}(A_i') \in \mathcal{A},
+  \]
+  hence \( \bigcup_{i=1}^\infty A_i' \in \mathcal{D}' \).
+\end{itemize}
+
+Thus, \( \mathcal{D}' \) is a \( \sigma \)-algebra containing \( \mathcal{E}' \), so it contains \( \sigma(\mathcal{E}') = \mathcal{A}' \). Therefore, \( T^{-1}(A') \in \mathcal{A} \) for all \( A' \in \mathcal{A}' \), i.e., \( T \) is measurable.
+\end{proof}
+
+\medskip
+\begin{example}
+Let \( T : \mathbb{R}^m \to \mathbb{R}^n \) be a continuous function. Then \( T \) is \( \mathcal{B}(\mathbb{R}^m) \)/\( \mathcal{B}(\mathbb{R}^n) \)-measurable.
+
+Indeed, from elementary analysis, we know that \( T \) is continuous if and only if
+\[
+T^{-1}(A') \subset \mathbb{R}^m \text{ is open for every open set } A' \subset \mathbb{R}^n.
+\]
+Since the Borel \( \sigma \)-algebra \( \mathcal{B}(\mathbb{R}^n) \) is generated by the open sets \( \mathcal{O}_{\mathbb{R}^n} \), it follows that
+\[
+T^{-1}(\mathcal{O}_{\mathbb{R}^n}) \subset \mathcal{O}_{\mathbb{R}^m} \subset \sigma(\mathcal{O}_{\mathbb{R}^m}) = \mathcal{B}(\mathbb{R}^m).
+\]
+Hence, by Lemma 5.1, \( T \) is \( \mathcal{B}(\mathbb{R}^m) \)/\( \mathcal{B}(\mathbb{R}^n) \)-measurable.
+\end{example}
+
+\medskip
+\begin{theorem}
+Let \( (X_i, \mathcal{A}_i) \), \( i = 1, 2, 3 \), be measurable spaces, and let
+\[
+T : X_1 \to X_2, \quad S : X_2 \to X_3
+\]
+be \( \mathcal{A}_1 / \mathcal{A}_2 \)- and \( \mathcal{A}_2 / \mathcal{A}_3 \)-measurable maps, respectively. Then the composition
+\[
+S \circ T : X_1 \to X_3
+\]
+is \( \mathcal{A}_1 / \mathcal{A}_3 \)-measurable.
+\end{theorem}
+
+\begin{proof}
+Let \( A_3 \in \mathcal{A}_3 \). Then
+\[
+(S \circ T)^{-1}(A_3) = T^{-1}\left(S^{-1}(A_3)\right).
+\]
+Since \( S \) is \( \mathcal{A}_2 / \mathcal{A}_3 \)-measurable, we have \( S^{-1}(A_3) \in \mathcal{A}_2 \). Since \( T \) is \( \mathcal{A}_1 / \mathcal{A}_2 \)-measurable, it follows that \( T^{-1}(S^{-1}(A_3)) \in \mathcal{A}_1 \). Therefore, \( S \circ T \) is \( \mathcal{A}_1 / \mathcal{A}_3 \)-measurable.
+\end{proof}
 
 \end{document}
