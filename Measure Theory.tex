@@ -962,6 +962,12 @@ The set function \( \lambda_n \) extends to a measure on the Borel \( \sigma \)-
 \]
 \end{corollary}
 
+\medskip
+\begin{remark}[Relation to Elementary Volume]\label{rem:volume-uniqueness}
+The uniqueness of Lebesgue measure and its properties imply that Lebesgue measure coincides with the familiar volume function \( \operatorname{vol}^{(n)}(\,\cdot\,) \) from elementary geometry. More precisely, \( \operatorname{vol}^{(n)} \) can be extended to a measure on the Borel \( \sigma \)-algebra \( \mathcal{B}(\mathbb{R}^n) \) in only one way namely, as the Lebesgue measure \( \lambda^n \).
+\end{remark}
+
+
 
 
 \vspace{3em}
@@ -1151,4 +1157,155 @@ The pushforward measure \( \xi(\mathbb{P}) \), also called the \emph{law} or \em
 \xi(\mathbb{P})(7) = \mathbb{P}(\xi^{-1}(\{7\})) = \mathbb{P}(\{(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\}) = \frac{6}{36} = \frac{1}{6}.
 \]
 \end{example}
+
+\medskip
+\begin{remark}
+A matrix \( T \in \mathbb{R}^{n \times n} \) is called orthogonal if and only if
+\[
+T^\top T = I,
+\]
+i.e., the transpose of \( T \) is equal to its inverse.
+
+Orthogonal matrices preserve lengths and angles. That is, for all \( x, y \in \mathbb{R}^n \), we have
+\begin{align*}
+\langle x, y \rangle &= \langle Tx, Ty \rangle, \\
+\|x\| &= \|Tx\|,
+\end{align*}
+where the standard Euclidean inner product and norm are defined by
+\[
+\langle x, y \rangle := \sum_{i=1}^n x_i y_i, \qquad \|x\|^2 := \langle x, x \rangle.
+\]
+\end{remark}
+
+\medskip
+\begin{theorem}
+Let \( T \in \mathbb{R}^{n \times n} \) be an orthogonal matrix. Then the Lebesgue measure \( \lambda^n \) is invariant under \( T \), i.e.,
+\[
+T(\lambda^n) = \lambda^n.
+\]
+\end{theorem}
+
+\begin{proof}
+The matrix \( T \in \mathbb{R}^{n \times n} \) defines a linear map \( x \mapsto Tx \), i.e.,
+\[
+T(ax + by) = aTx + bTy \quad \text{for all } a, b \in \mathbb{R}, \, x, y \in \mathbb{R}^n.
+\]
+From the orthogonality condition, it follows that \( T \) is an isometry:
+\[
+\|Tx - Ty\| = \|T(x - y)\| = \|x - y\|.
+\]
+Thus, \( T \) is continuous and therefore \( \mathcal{B}(\mathbb{R}^n)/\mathcal{B}(\mathbb{R}^n) \)-measurable by Example~5.2. Furthermore by Theorem~5.3, the pushforward measure
+\[
+\nu(B) := \lambda^n(T^{-1}(B))
+\]
+is well-defined on \( \mathcal{B}(\mathbb{R}^n) \).
+
+We now show that \( \nu \) is translation invariant. For any \( x \in \mathbb{R}^n \) and \( B \in \mathcal{B}(\mathbb{R}^n) \), we compute
+\begin{align*}
+\nu(x + B) &= \lambda^n\left(T^{-1}(x + B)\right) \\
+&= \lambda^n\left(T^{-1}x + T^{-1}B\right) \\
+&= \lambda^n\left(T^{-1}B\right) = \nu(B),
+\end{align*}
+where we used linearity of \( T \) and translation invariance of Lebesgue measure (Theorem~3.5(i)).
+
+Hence \( \nu \) is a translation-invariant measure on \( \mathbb{R}^n \). By Theorem~3.5(ii), since \( \nu \) is also finite on bounded sets (e.g., the unit ball), it must be a scalar multiple of Lebesgue measure:
+\[
+\nu = c \lambda^n \quad \text{for some } c > 0.
+\]
+
+To determine the constant \( c \), consider the unit ball \( B_1(0) := \{ x \in \mathbb{R}^n : \|x\| < 1 \} \). Since \( T \) is orthogonal, we have
+\[
+x \in B_1(0) \iff \|x\| < 1 \iff \|Tx\| < 1 \iff x \in T^{-1}(B_1(0)),
+\]
+so \( T^{-1}(B_1(0)) = B_1(0) \). Therefore,
+\[
+\lambda^n(B_1(0)) = \lambda^n(T^{-1}(B_1(0))) = \nu(B_1(0)) = c \lambda^n(B_1(0)),
+\]
+which implies \( c = 1 \), since \( 0 < \lambda^n(B_1(0)) < \infty \). Thus, \( \nu = \lambda^n \), and the theorem follows.
+\end{proof}
+
+\medskip
+\begin{remark}
+Theorem~5.4 is a special case of the following general change-of-variable formula for Lebesgue measure. Recall that a matrix \( S \in \mathbb{R}^{n \times n} \) is invertible if and only if \( \det S \neq 0 \).
+\end{remark}
+
+\medskip
+\begin{theorem}[Change of Variables]
+Let \( S \in \mathbb{R}^{n \times n} \) be an invertible matrix. Then
+\begin{equation}
+S(\lambda^n) = |\det S^{-1}| \, \lambda^n = |\det S|^{-1} \, \lambda^n. \tag{7.7}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Since \( S \) is invertible, both \( S \) and \( S^{-1} \) are linear maps on \( \mathbb{R}^n \), and hence continuous and measurable (by Example~5.2). Define a measure \( \nu \) on \( \mathbb{R}^n \) by
+\[
+\nu(B) := \lambda^n(S^{-1}(B)), \quad B \in \mathcal{B}(\mathbb{R}^n).
+\]
+For any \( x \in \mathbb{R}^n \), we have
+\[
+\nu(x + B) = \lambda^n(S^{-1}(x + B)) = \lambda^n(S^{-1}x + S^{-1}B) = \lambda^n(S^{-1}B) = \nu(B),
+\]
+so \( \nu \) is translation invariant. 
+
+By Theorem 3.5(ii), any translation-invariant measure finite on the unit cube must be a scalar multiple of Lebesgue measure, so there exists a constant \( c > 0 \) such that
+\[
+\nu = c \lambda^n.
+\]
+
+To determine \( c \), we evaluate both sides on the unit cube \( [0,1)^n \), which satisfies \( \lambda^n([0,1)^n) = 1 \):
+\[
+\nu([0,1)^n) = \lambda^n\bigl(S^{-1}([0,1)^n)\bigr).
+\]
+
+The set \( S^{-1}([0,1)^n) \) is a parallelepiped spanned by the vectors \( S^{-1} e_i \), where \( (e_i)_{i=1}^n \) is the standard basis of \( \mathbb{R}^n \). Its volume is given by the absolute value of the determinant:
+\[
+\operatorname{vol}^{(n)}\bigl(S^{-1}([0,1)^n)\bigr) = |\det S^{-1}| = |\det S|^{-1}.
+\]
+
+By Remark 4.1, Lebesgue measure coincides with this volume on Borel sets, so
+\[
+\nu([0,1)^n) = \lambda^n\bigl(S^{-1}([0,1)^n)\bigr) = |\det S|^{-1}.
+\]
+
+Hence,
+\[
+\nu = |\det S|^{-1} \lambda^n,
+\]
+which completes the proof.
+\end{proof}
+
+\medskip
+\begin{definition}
+A \emph{motion} in \( \mathbb{R}^n \) is a linear transformation of the form
+\[
+M x = \tau_x \circ T(x),
+\]
+where \( \tau_x(y) = y + x \) denotes translation by \( x \in \mathbb{R}^n \), and \( T \in \mathbb{R}^{n \times n} \) is an orthogonal matrix (i.e., \( T^\top T = \mathrm{id}_n \)). In particular, two sets are said to be \emph{congruent} if one can be obtained from the other by a motion.
+\end{definition}
+
+\medskip
+\begin{theorem}[Invariance under Motions]
+Lebesgue measure is invariant under motions: for any motion \( M \) in \( \mathbb{R}^n \), we have
+\[
+\lambda^n = M(\lambda^n).
+\]
+In particular, congruent sets have the same Lebesgue measure.
+\end{theorem}
+
+\begin{proof}
+By definition, any motion \( M \) can be written as \( M = \tau_x \circ T \), where \( T \) is orthogonal (so \( |\det T| = 1 \)). By Theorem~5.4,
+\[
+T(\lambda^n) = \lambda^n.
+\]
+Translation invariance of Lebesgue measure (Theorem~3.5(i)) gives
+\[
+\tau_x(\lambda^n) = \lambda^n.
+\]
+Hence,
+\[
+M(\lambda^n) = \tau_x(T(\lambda^n)) = \tau_x(\lambda^n) = \lambda^n. \qedhere
+\]
+\end{proof}
+
 \end{document}
