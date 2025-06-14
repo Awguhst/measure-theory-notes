@@ -9,3 +9,4 @@ These are my personal self-study notes on measure theory, primarily based on "**
 - Uniqueness of Measures
 - Existence of Measures
 - Measurable Mappings
+- Measurable Functions
