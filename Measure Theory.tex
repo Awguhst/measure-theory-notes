@@ -1506,25 +1506,12 @@ Thus, \( \{ \mathbf{1}_A > \alpha \} \in \mathcal{A} \) for all \( \alpha \in \m
 \medskip
 \begin{example}
 Let \( (X, \mathcal{A}) \) be a measurable space.  
-Suppose \( A_1, \dots, A_M \in \mathcal{A} \) are mutually disjoint and \( y_1, \dots, y_M \in \mathbb{R} \).  
+Suppose \( A_1, \dots, A_M \in \mathcal{A} \) are pairwise disjoint and \( y_1, \dots, y_M \in \mathbb{R} \).  
 Define the function
 \[
-f(x) := \sum_{m=1}^M y_m \mathbf{1}_{A_m}(x).
+f(x) := \sum_{m=1}^M y_m \, \mathbf{1}_{A_m}(x).
 \]
-Then \( f \) is measurable.
-
-\begin{proof}
-We want to show that \( \{ f > \alpha \} \in \mathcal{A} \) for all \( \alpha \in \mathbb{R} \).  
-Note that
-\[
-f(x) > \alpha \quad \Leftrightarrow \quad \exists m \in \{1, \dots, M\} \text{ such that } x \in A_m \text{ and } y_m > \alpha.
-\]
-Since the \( A_m \) are disjoint, we get
-\[
-\{ f > \alpha \} = \bigcup_{\substack{m :\\ y_m > \alpha}} A_m.
-\]
-Each \( A_m \in \mathcal{A} \), so the union is measurable. Hence, \( f \) is measurable.
-\end{proof}
+Then \( f \in \mathcal{E}(\mathcal{A}) \), and in particular, \( f \) is measurable.
 \end{example}
 
 \medskip
@@ -1572,4 +1559,67 @@ This shows that every measurable function with finitely many values is a simple 
 In particular, \( \mathcal{E}(\mathcal{A}) \subset \mathcal{M}(\mathcal{A}) \), where \( \mathcal{M}(\mathcal{A}) \) is the space of measurable functions.
 \end{example}
 
+\medskip
+\begin{example}
+If \( f, g \in \mathcal{E}(\mathcal{A}) \), then
+\[
+f \pm g \in \mathcal{E}(\mathcal{A}) \quad \text{and} \quad f \cdot g \in \mathcal{E}(\mathcal{A}).
+\]
+\end{example}
+
+\begin{proof}
+Let
+\[
+f = \sum_{m=1}^{M} y_m \, \mathbf{1}_{A_m}, \qquad
+g = \sum_{n=1}^{N} z_n \, \mathbf{1}_{B_n}
+\]
+be standard representations, where \( A_m, B_n \in \mathcal{A} \) are disjoint families and \( y_m, z_n \in \mathbb{R} \).
+
+Consider the intersections \( A_m \cap B_n \). Then:
+\begin{itemize}
+  \item Each \( A_m \cap B_n \in \mathcal{A} \), since \( \mathcal{A} \) is closed under intersections.
+  \item The sets \( A_m \cap B_n \) are pairwise disjoint for distinct pairs \( (m, n) \neq (m', n') \).
+  \item Their union covers \( X \), because
+  \[
+  X = \bigcup_{m=1}^{M} A_m = \bigcup_{n=1}^{N} B_n \quad \Rightarrow \quad X = \bigcup_{m=1}^{M} \bigcup_{n=1}^{N} (A_m \cap B_n).
+  \]
+\end{itemize}
+
+On each set \( A_m \cap B_n \), the functions \( f \) and \( g \) are constant with values \( y_m \) and \( z_n \), respectively. Thus,
+\[
+f(x) \pm g(x) = y_m \pm z_n, \qquad f(x) \cdot g(x) = y_m z_n \quad \text{for } x \in A_m \cap B_n.
+\]
+
+Therefore, we obtain:
+\[
+f \pm g = \sum_{m=1}^{M} \sum_{n=1}^{N} (y_m \pm z_n) \, \mathbf{1}_{A_m \cap B_n}, \qquad
+f \cdot g = \sum_{m=1}^{M} \sum_{n=1}^{N} (y_m z_n) \, \mathbf{1}_{A_m \cap B_n}.
+\]
+
+These are finite sums over pairwise disjoint measurable sets, so \( f \pm g \) and \( f \cdot g \) are both simple functions.
+
+Hence, \( f \pm g, \; f \cdot g \in \mathcal{E}(\mathcal{A}) \).
+\end{proof}
+
+\medskip
+\begin{definition}
+Let \( f \in \mathcal{E}(\mathcal{A}) \). Define its \emph{positive part}, \emph{negative part}, and \emph{absolute value} by
+\[
+f^+(x) := \max(f(x), 0), \qquad
+f^-(x) := \max(-f(x), 0), \qquad
+|f(x)| := f^+(x) + f^-(x).
+\]
+Then \( f^+, f^-, |f| \in \mathcal{E}(\mathcal{A}) \), and
+\[
+f = f^+ - f^-, \qquad |f| = f^+ + f^-.
+\]
+\end{definition}
+
+\medskip
+\begin{theorem}[Sombrero Lemma]
+Let \( (X, \mathcal{A}) \) be a measurable space. Every positive \( \mathcal{A} / \mathcal{B}([0, \infty]) \)-measurable function \( u : X \to [0, \infty] \) is the pointwise limit of an increasing sequence of simple functions \( f_n \in \mathcal{E}(\mathcal{A}) \), with \( f_n \geq 0 \), that is,
+\[
+u(x) = \sup_{n \in \mathbb{N}} f_n(x) = \lim_{n \to \infty} f_n(x), \qquad \text{with} \quad f_1 \leq f_2 \leq f_3 \leq \dots
+\]
+\end{theorem}
 \end{document}
