@@ -1504,17 +1504,6 @@ Thus, \( \{ \mathbf{1}_A > \alpha \} \in \mathcal{A} \) for all \( \alpha \in \m
 \end{example}
 
 \medskip
-\begin{example}
-Let \( (X, \mathcal{A}) \) be a measurable space.  
-Suppose \( A_1, \dots, A_M \in \mathcal{A} \) are pairwise disjoint and \( y_1, \dots, y_M \in \mathbb{R} \).  
-Define the function
-\[
-f(x) := \sum_{m=1}^M y_m \, \mathbf{1}_{A_m}(x).
-\]
-Then \( f \in \mathcal{E}(\mathcal{A}) \), and in particular, \( f \) is measurable.
-\end{example}
-
-\medskip
 \begin{definition}
 Let \( (X, \mathcal{A}) \) be a measurable space.
 
@@ -1617,9 +1606,19 @@ f = f^+ - f^-, \qquad |f| = f^+ + f^-.
 
 \medskip
 \begin{theorem}[Sombrero Lemma]
-Let \( (X, \mathcal{A}) \) be a measurable space. Every positive \( \mathcal{A} / \mathcal{B}([0, \infty]) \)-measurable function \( u : X \to [0, \infty] \) is the pointwise limit of an increasing sequence of simple functions \( f_n \in \mathcal{E}(\mathcal{A}) \), with \( f_n \geq 0 \), that is,
+Let \( (X, \mathcal{A}) \) be a measurable space. Every positive \( \mathcal{A}/\mathcal{B}(\overline{\mathbb{R}})\)-measurable function \( u : X \to [0, \infty] \) is the pointwise limit of an increasing sequence of simple functions \( f_n \in \mathcal{E}(\mathcal{A}) \), with \( f_n \geq 0 \), that is,
 \[
 u(x) = \sup_{n \in \mathbb{N}} f_n(x) = \lim_{n \to \infty} f_n(x), \qquad \text{with} \quad f_1 \leq f_2 \leq f_3 \leq \dots
 \]
 \end{theorem}
+
+\medskip
+\begin{corollary}
+Let \( (X, \mathcal{A}) \) be a measurable space.  
+Every \( \mathcal{A}/\mathcal{B}(\overline{\mathbb{R}})\)-measurable function \( u : X \to \overline{\mathbb{R}} \) is the pointwise limit of simple functions \( f_n \in \mathcal{E}(\mathcal{A}) \) such that
+\[
+|f_n(x)| \leq |u(x)| \quad \text{for all } x \in X.
+\]
+If \( u \) is bounded, the convergence is uniform.
+\end{corollary}
 \end{document}
