@@ -1640,7 +1640,7 @@ and, whenever it exists in \( \overline{\mathbb{R}} \), also the pointwise limit
 
 \medskip
 \begin{corollary}
-Let \( u, v : X \to \overline{\mathbb{R}} \) be \( \mathcal{A} \)-\( \mathcal{B}(\overline{\mathbb{R}}) \)-measurable functions. Then the following functions are also measurable.
+Let \( u, v : X \to \overline{\mathbb{R}} \) be \( \mathcal{A} \)/\( \mathcal{B}(\overline{\mathbb{R}}) \)-measurable functions. Then the following functions are also measurable.
 \[
 u + v, \quad u \cdot v, \quad u \vee v := \max\{u, v\}, \quad u \wedge v := \min\{u, v\}.
 \]
@@ -1760,11 +1760,70 @@ f = \sum_{i=1}^{M} y_i \, \mathbf{1}_{A_i} \in \mathcal{E}_+(\mathcal{A})
 \]
 be a simple function in standard representation. Then the number
 \[
-\mathcal{I}_\mu(f) := \sum_{i=1}^{M} y_i \, \mu(A_i) \in [0, \infty]
+I_\mu(f) := \sum_{i=1}^{M} y_i \, \mu(A_i) \in [0, \infty]
 \]
 is called the \emph{\( \mu \)-integral} of \( f \).  
 This value is independent of the particular standard representation of \( f \).
 \end{definition}
 
+\medskip
+\begin{lemma}[Properties of Integral of Simple Functions]
+Let \( f, g \in \mathcal{E}_+(\mathcal{A}) \). Then the integral \( I_\mu : \mathcal{E}_+(\mathcal{A}) \to [0, \infty] \) satisfies:
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{Normalization:} \( I_\mu(\mathbf{1}_A) = \mu(A) \) for all \( A \in \mathcal{A} \).
+    \item \textbf{Positive Homogeneity:} For all \( \lambda > 0 \), we have \( \mathcal{I}_\mu(\lambda f) = \lambda \, I_\mu(f) \).
+    \item \textbf{Additivity:} \( I_\mu(f + g) = \mathcal{I}_\mu(f) + \mathcal{I}_\mu(g) \).
+    \item \textbf{Monotonicity:} If \( f \leq g \), then \( I_\mu(f) \leq I_\mu(g) \).
+\end{enumerate}
+\end{lemma}
+
+\medskip
+\begin{remark}
+By Theorem 6.4, every function \( u \in \mathcal{M}_+(\mathcal{A}) \) can be written as the pointwise limit of an increasing sequence of simple functions. Corollary 6.4.2 further ensures that the supremum of measurable functions is measurable. Hence, we have the characterization:
+\[
+u \in \mathcal{M}_+(\mathcal{A}) \quad \Longleftrightarrow \quad u = \sup_{n \in \mathbb{N}} f_n, \quad \text{where } f_n \in \mathcal{E}_+(\mathcal{A}), \; f_n \leq f_{n+1}.
+\]
+
+This observation allows us to \emph{approximate from below} any positive measurable function \( u \) by simple functions whose integrals are well-defined. By doing so, we can systematically exhaust the area under the graph of \( u \) using integrals of simple functions.
+\end{remark}
+
+\medskip
+\begin{definition}[Integral of a Positive Measurable Function]
+Let \( (X, \mathcal{A}, \mu) \) be a measure space. The \(\mu\)-integral of a positive measurable function \( u \in \mathcal{M}_+(\mathcal{A}) \) is defined as
+\[
+\int u \, d\mu := \sup \left\{ I_\mu(g) : 0 \leq g \leq u,\; g \in \mathcal{E}_+(\mathcal{A}) \right\} \in [0, \infty].
+\]
+If we wish to emphasize the integration variable, we may write
+\[
+\int u(x) \, \mu(dx).
+\]
+\end{definition}
+
+\medskip
+\begin{lemma}
+For all \( f \in \mathcal{E}_+(\mathcal{A}) \), we have
+\[
+\int f \, d\mu = I_\mu(f).
+\]
+\end{lemma}
+
+\begin{proof}
+Let \( f \in \mathcal{E}_+(\mathcal{A}) \). By definition of the integral for positive measurable functions (Definition 7.2), we take the supremum over all simple functions \( g \in \mathcal{E}_+(\mathcal{A}) \) such that \( g \leq f \).
+
+But since \( f \) is itself a simple function and clearly satisfies \( f \leq f \), it is one of the admissible candidates in this supremum. This gives
+\[
+\int f \, d\mu = \sup \left\{ I_\mu(g) : g \in \mathcal{E}_+(\mathcal{A}),\ g \leq f \right\} \geq I_\mu(f).
+\]
+
+On the other hand, any simple function \( g \in \mathcal{E}_+(\mathcal{A}) \) with \( g \leq f \) satisfies \( I_\mu(g) \leq I_\mu(f) \), by the monotonicity of \( I_\mu \) (Lemma 7.2). Hence, the supremum over such \( I_\mu(g) \) can never exceed \( I_\mu(f) \), so
+\[
+\int f \, d\mu \leq I_\mu(f).
+\]
+
+Putting both inequalities together, we conclude
+\[
+\int f \, d\mu = I_\mu(f). \qedhere
+\]
+\end{proof}
 \end{document}
 
