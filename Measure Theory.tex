@@ -1789,7 +1789,7 @@ This observation allows us to \emph{approximate from below} any positive measura
 
 \medskip
 \begin{definition}[Integral of a Positive Measurable Function]
-Let \( (X, \mathcal{A}, \mu) \) be a measure space. The \(\mu\)-integral of a positive measurable function \( u \in \mathcal{M}_+(\mathcal{A}) \) is defined as
+Let \( (X, \mathcal{A}, \mu) \) be a measure space. The \(\mu\)-integral of a positive measurable function \( u \in \mathcal{M}_+^{\overline{\mathbb{R}}}(\mathcal{A}) \) is defined as
 \[
 \int u \, d\mu := \sup \left\{ I_\mu(g) : 0 \leq g \leq u,\; g \in \mathcal{E}_+(\mathcal{A}) \right\} \in [0, \infty].
 \]
@@ -1825,5 +1825,89 @@ Putting both inequalities together, we conclude
 \int f \, d\mu = I_\mu(f). \qedhere
 \]
 \end{proof}
+
+\medskip
+\begin{theorem}[Beppo Levi's Monotone Convergence Theorem]
+Let \( (X, \mathcal{A}, \mu) \) be a measure space, and let \( (u_n)_{n \in \mathbb{N}} \subset \mathcal{M}_+^{\overline{\mathbb{R}}}(\mathcal{A}) \) be an increasing sequence of measurable functions, i.e.,
+\[
+0 \leq u_n(x) \leq u_{n+1}(x) \quad \text{for all } x \in X \text{ and } n \in \mathbb{N}.
+\]
+Define the pointwise limit \( u := \lim_{n \to \infty} u_n = \sup_{n \in \mathbb{N}} u_n \). Then \( u \in \mathcal{M}_+^{\overline{\mathbb{R}}}(\mathcal{A}) \), and
+\[
+\int u \, d\mu = \lim_{n \to \infty} \int u_n \, d\mu.
+\]
+This equality remains valid even if the integrals take the value \( +\infty \); in particular, both sides may be infinite.
+\end{theorem}
+
+\medskip
+\begin{corollary}
+Let \( u \in \mathcal{M}_+^{\overline{\mathbb{R}}}(\mathcal{A}) \). Then
+\[
+\int u \, d\mu = \lim_{n \to \infty} \int f_n \, d\mu
+\]
+for every increasing sequence \( (f_n)_{n \in \mathbb{N}} \subset \mathcal{E}_+(\mathcal{A}) \) such that \( \lim_{n \to \infty} f_n = u \).
+\end{corollary}
+
+\medskip
+\begin{lemma}[Properties of the Integral]
+Let \( u, v \in \mathcal{M}_+^{\overline{\mathbb{R}}}(\mathcal{A}) \). Then:
+\begin{itemize}
+    \item[(i)] \( \displaystyle \int \mathbf{1}_A \, d\mu = \mu(A) \quad \forall A \in \mathcal{A} \);
+    \item[(ii)] \( \displaystyle \int \alpha u \, d\mu = \alpha \int u \, d\mu \quad \forall \alpha > 0 \) \hfill (positive homogeneous);
+    \item[(iii)] \( \displaystyle \int (u + v) \, d\mu = \int u \, d\mu + \int v \, d\mu \) \hfill (additive);
+    \item[(iv)] If \( u \leq v \), then \( \displaystyle \int u \, d\mu \leq \int v \, d\mu \) \hfill (monotone).
+\end{itemize}
+\end{lemma}
+
+\medskip
+\begin{corollary}
+Let \( (u_n)_{n \in \mathbb{N}} \subset \mathcal{M}_+^{\overline{\mathbb{R}}}(\mathcal{A}) \). Then the series
+\[
+\sum_{n=1}^{\infty} u_n
+\]
+defines a measurable function, and we have
+\[
+\int \sum_{n=1}^{\infty} u_n \, d\mu = \sum_{n=1}^{\infty} \int u_n \, d\mu,
+\]
+including the case where both sides equal \( +\infty \).
+\end{corollary}
+
+\begin{proof}
+Define the sequence of partial sums
+\[
+s_M := \sum_{n=1}^{M} u_n.
+\]
+Each \( s_M \) is measurable and non-negative because it is a finite sum of measurable, non-negative functions. Moreover, the sequence \( (s_M)_{M \in \mathbb{N}} \) is increasing, i.e., \( s_1 \leq s_2 \leq \cdots \), and
+\[
+\sum_{n=1}^{\infty} u_n = \lim_{M \to \infty} s_M.
+\]
+
+By Theorem 7.4 (Beppo Levi), we can exchange the limit and the integral:
+\[
+\int \sum_{n=1}^{\infty} u_n \, d\mu = \lim_{M \to \infty} \int s_M \, d\mu.
+\]
+
+On the other hand, by Lemma 7.5 (iii)
+\[
+\int s_M \, d\mu = \sum_{n=1}^{M} \int u_n \, d\mu.
+\]
+
+Putting it all together,
+\[
+\int \sum_{n=1}^{\infty} u_n \, d\mu = \lim_{M \to \infty} \sum_{n=1}^{M} \int u_n \, d\mu = \sum_{n=1}^{\infty} \int u_n \, d\mu.
+\]
+\end{proof}
+
+\medskip
+\begin{theorem}[Fatou's Lemma]
+Let \( (u_n)_{n \in \mathbb{N}} \subset \mathcal{M}_+^{\overline{\mathbb{R}}}(\mathcal{A}) \) be a sequence of non-negative measurable functions. Then the pointwise limit inferior
+\[
+u := \liminf_{n \to \infty} u_n
+\]
+is measurable, and we have the inequality
+\[
+\int \liminf_{n \to \infty} u_n \, d\mu \leq \liminf_{n \to \infty} \int u_n \, d\mu.
+\]
+\end{theorem}
 \end{document}
 
