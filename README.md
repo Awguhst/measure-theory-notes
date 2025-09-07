@@ -1,6 +1,6 @@
 # Measure Theory Notes
 
-These are some very questionable measure theory notes based on *Measures, Integrals, and Martingales* by René L. Schilling. Some might even call them **suspicious**.
+These are some very questionable measure theory notes based on **Measures, Integrals, and Martingales* by René L. Schilling**.
 
 ## Topics Covered
 
