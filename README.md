@@ -1,6 +1,6 @@
 # Measure Theory Notes
 
-These are a some `Measure Theory Notes` of a *Dubious Quality™*
+These are a bunch of notes on Measure Theory of a *Dubious Quality™*
 
 ## Topics Covered
 
