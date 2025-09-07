@@ -1,6 +1,6 @@
 # Measure Theory Notes
 
-These are a some **Measure Theory** self-study notes of *Dubious Quality™*
+These are a some **Measure Theory** Self-Study Notes of a *Dubious Quality™*
 
 ## Topics Covered
 
