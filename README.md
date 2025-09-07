@@ -1,6 +1,6 @@
 # Measure Theory Notes
 
-These are measure theory notes based on **Measures, Integrals, and Martingales by René L. Schilling** Of quite Dubious Quality™.
+These are a some **Measure Theory** self-study notes of *Dubious Quality™*
 
 ## Topics Covered
 
